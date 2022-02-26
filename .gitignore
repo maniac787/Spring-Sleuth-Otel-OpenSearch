@@ -19,5 +19,8 @@ generated/
 .DS_Store
 .vscode/settings.json
 
+/Customers/target/
+/Products/target/
 Customers/target/
 Products/target/
+
