@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: "Customers"
+#  zipkin:
+#    enabled: false
+  sleuth:
+    otel:
+      exporter:
+        otlp:
+          #endpoint: "http://localhost:21890"
+          endpoint: "http://localhost:9411"
+      config:
+        trace-id-ratio-based: 0.5 # Default is 0.1
+    propagation:
+      type: "B3"
+
+
+server:
+  port: 8080
+
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
+    io.opentelemetry: DEBUG
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
