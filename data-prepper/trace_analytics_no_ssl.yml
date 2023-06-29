@@ -12,21 +12,21 @@ raw-pipeline:
   source:
     pipeline:
       name: "entry-pipeline"
-  prepper:
-    - otel_trace_raw_prepper:
+  processor:
+    - otel_trace_raw:
   sink:
     - opensearch:
         hosts: [ "https://node-0.example.com:9200" ]
         cert: "/usr/share/data-prepper/root-ca.pem"
         username: "admin"
         password: "admin"
-        trace_analytics_raw: true
+        index_type: trace-analytics-raw
 service-map-pipeline:
   delay: "100"
   source:
     pipeline:
       name: "entry-pipeline"
-  prepper:
+  processor:
     - service_map_stateful:
   sink:
     - opensearch:
@@ -34,4 +34,4 @@ service-map-pipeline:
         cert: "/usr/share/data-prepper/root-ca.pem"
         username: "admin"
         password: "admin"
-        trace_analytics_service_map: true
+        index_type: trace-analytics-service-map
